@@ -22,7 +22,6 @@ public class MeetingImpl implements Meeting {
 			this.date = date;
 			this.contacts = contacts;
 		}
-	    
 	}
 	/**
 	* @see Meeting
@@ -30,6 +29,21 @@ public class MeetingImpl implements Meeting {
 	public int getId(){
 		return id;
 	}
+	
+	/**
+	* @see Meeting
+	*/
+	public Calendar getDate(){
+		return date;
+	}
+	
+	/**
+	* @see Meeting
+	*/
+	public Set<Contact> getContacts(){
+		return contacts;
+	}
+		
 	
 }
 	
