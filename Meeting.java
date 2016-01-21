@@ -12,10 +12,10 @@ public interface Meeting {
 * @return the id of the meeting.
 */
 
-/**
-* Returns the id of the meeting.
-*
-* @return the id of the meeting.
-*/
-int getId();
+	/**
+	* Returns the id of the meeting.
+	*
+	* @return the id of the meeting.
+	*/
+	int getId();
 }
