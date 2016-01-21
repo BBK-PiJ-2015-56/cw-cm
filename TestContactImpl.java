@@ -15,6 +15,10 @@ public class TestContactImpl{
 		int expected = 1;
 		assertEquals(expected , output);
 	}
+	@Test(expected = IllegalArgumentException.class)
+	public void testsNegativeAndZeroIdsFail(){
+		cont = new ContactImpl( -1 , "Sam Cooke");
+	}
 	
 	@Test
 	public void testGetName(){

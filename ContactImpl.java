@@ -1,3 +1,6 @@
+/**
+*@see Contact
+*/
 public class ContactImpl implements Contact{
 	int id;
 	String name;
@@ -8,6 +11,11 @@ public class ContactImpl implements Contact{
 	*   notes about the contact when they are created.
 	*/
 	public ContactImpl(int id , String name){
+		System.out.println("The id was " + id);
+		if(id <= 0){
+			throw new IllegalArgumentException();
+		}
+		System.out.println("I said the id was " + id);
 		this.id = id;
 		this.name = name;
 		notes = "";
