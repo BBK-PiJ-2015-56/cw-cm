@@ -20,9 +20,11 @@ public class ContactImpl implements Contact{
 		if(name == null){
 			throw new NullPointerException();
 		}
-		this.id = id;
-		this.name = name;
-		notes = "";
+		else{
+			this.id = id;
+			this.name = name;
+			notes = "";
+		}
 	}
 	
 	/** 
@@ -33,15 +35,17 @@ public class ContactImpl implements Contact{
 		if(id <= 0){
 			throw new IllegalArgumentException();
 		}
-		if(name == null){
+		else if(name == null){
 			throw new NullPointerException();
 		}
-		if(notes == null){
+		else if(notes == null){
 			throw new NullPointerException();
 		}
-		this.id = id;
-		this.name = name;
-		this.notes = notes;
+		else{
+			this.id = id;
+			this.name = name;
+			this.notes = notes;
+		}
 	}
 	
 	/**
