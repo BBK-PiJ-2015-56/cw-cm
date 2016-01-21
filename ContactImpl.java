@@ -1,4 +1,4 @@
-/**
+/*
 *@see Contact
 */
 public class ContactImpl implements Contact{
@@ -10,12 +10,16 @@ public class ContactImpl implements Contact{
 	*   A constructor when the user does not have any 
 	*   notes about the contact when they are created.
 	*/
+	
+	//note I would like to put the repeated code from botgh constructors into 
+	// a helper method but can't as it is not defined in the interface.
 	public ContactImpl(int id , String name){
-		System.out.println("The id was " + id);
 		if(id <= 0){
 			throw new IllegalArgumentException();
 		}
-		System.out.println("I said the id was " + id);
+		if(name == null){
+			throw new NullPointerException();
+		}
 		this.id = id;
 		this.name = name;
 		notes = "";
@@ -26,6 +30,15 @@ public class ContactImpl implements Contact{
 	* that the user wishes to add upon creation of the contact
 	*/
 	public ContactImpl(int id , String name , String notes){
+		if(id <= 0){
+			throw new IllegalArgumentException();
+		}
+		if(name == null){
+			throw new NullPointerException();
+		}
+		if(notes == null){
+			throw new NullPointerException();
+		}
 		this.id = id;
 		this.name = name;
 		this.notes = notes;

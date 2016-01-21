@@ -16,8 +16,12 @@ public class TestContactImpl{
 		assertEquals(expected , output);
 	}
 	@Test(expected = IllegalArgumentException.class)
-	public void testsNegativeAndZeroIdsFail(){
+	public void testsNegativeAndZeroIdsFailFirstConstructor(){
 		cont = new ContactImpl( -1 , "Sam Cooke");
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void testsNegativeAndZeroIdsFailSecondConstructor(){
+		cont = new ContactImpl( -1 , "Sam Cooke", "good meeting");
 	}
 	
 	@Test
@@ -25,6 +29,14 @@ public class TestContactImpl{
 		String output = cont.getName();
 		String expected = "James Brown";
 		assertEquals(expected , output);
+	}
+	@Test(expected = NullPointerException.class)
+	public void testNullNameFailsFirstConstructor(){
+		cont = new ContactImpl(1,null);
+	}
+	@Test(expected = NullPointerException.class)
+	public void testNullNameFailsSecondConstructor(){
+		cont = new ContactImpl(1,"James Brown" , null);
 	}
 	
 	@Test 
