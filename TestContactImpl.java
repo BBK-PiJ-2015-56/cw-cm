@@ -23,7 +23,6 @@ public class TestContactImpl{
 	public void testsNegativeAndZeroIdsFailSecondConstructor(){
 		cont = new ContactImpl( -1 , "Sam Cooke", "good meeting");
 	}
-	
 	@Test
 	public void testGetName(){
 		String output = cont.getName();
