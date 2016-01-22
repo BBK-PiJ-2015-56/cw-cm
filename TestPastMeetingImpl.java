@@ -12,39 +12,37 @@ public class TestPastMeetingImpl{
 	Contact cont2;
 	Contact cont3;
 	Set<Contact> contacts;
-	Calendar date1;
-	Calendar date2;
+	Calendar date;
 	PastMeeting meetingWithNotes;
-	PastMeeting meetingNoNotes;
 	
 	@Before
 	public void setUp(){
 		cont1 = new ContactImpl(1 , "James");
 		cont2 = new ContactImpl(2 , "Jerome");
 		cont3 = new ContactImpl(3 , "Joe");
-		Set<Contact> contacts = new HashSet<Contact>();
+		contacts = new HashSet<Contact>();
 		contacts.add(cont1);
 		contacts.add(cont2);
 		contacts.add(cont3);
 		System.out.println("contacts size: " + contacts.size());
-		date1 = new GregorianCalendar(2016,0,28,15,0);
-		date2 = new GregorianCalendar(2016,0,28,16,0);
-		meetingWithNotes = new PastMeetingImpl(1 , date1 , contacts , "All actions agreed. " );
-		meetingNoNotes = new PastMeetingImpl(2, date2, contacts);
+		date = new GregorianCalendar(2016,0,28,15,0);
+		meetingWithNotes = new PastMeetingImpl(1 , date , contacts , "All actions agreed. " );
 		
 	}
 	@After
 	public void tearDown(){
 		contacts = null;
-		date1 = null;
-		date2 = null;
+		date = null;
 		meetingWithNotes = null;
-		meetingNoNotes = null;
 	}
-	
-	// no need to test exceptions already tested in MeetingImpl
+	@Test(expected = NullPointerException.class)
+	public void testsNullNotesFailsConstructor(){
+		meetingWithNotes = new PastMeetingImpl(1 , date , contacts , null);
+	}
+
 	@Test
-	public void testsGetNotesWhenNull(){
+	public void testsGetNotesWhenNoNotes(){
+		PastMeeting meetingNoNotes = new PastMeetingImpl(1 , date , contacts , "");
 		String output = meetingNoNotes.getNotes();
 		String expected = "";
 		assertEquals(expected , output);

@@ -23,7 +23,10 @@ public abstract class MeetingImpl implements Meeting {
 		else if(contacts.size() == 0){
 			throw new IllegalArgumentException();
 		}
-		else{
+		else if (date == null){
+			throw new NullPointerException();
+		}
+		else {
 			this.id = id;
 			this.date = date;
 			this.contacts = contacts;

@@ -20,7 +20,7 @@ public class TestFutureMeetingImpl {
 		cont1 = new ContactImpl(1 , "James");
 		cont2 = new ContactImpl(2 , "Jerome");
 		cont3 = new ContactImpl(3 , "Joe");
-		Set<Contact> contacts = new HashSet<Contact>();
+		contacts = new HashSet<Contact>();
 		contacts.add(cont1);
 		contacts.add(cont2);
 		contacts.add(cont3);
@@ -76,22 +76,11 @@ public class TestFutureMeetingImpl {
 		assertEquals(expected , output);
 	}
 	
-	/*@Test
-	public void testsGetContacts(){
-		Set<Contact> output = meeting.getContacts();
-		//System.out.println("The size of contacts right now is " + contacts.size());
-		// Cannot work out why this gives me NPE. i cant seem to reach contacts form here, 
-		//despite meeting.getContacts() working. I have added tearDown but still same issue
-		Set<Contact> expected = contacts;
-		assertEquals(expected , output);
-	} */
 	@Test
 	public void testsGetContacts(){
-		int output = meeting.getContacts().size();
-		int expected = 3;
+		Set<Contact> output = meeting.getContacts();
+		Set<Contact> expected = contacts;
 		assertEquals(expected , output);
-	}
-		
-	
+	} 	
 	
 }
