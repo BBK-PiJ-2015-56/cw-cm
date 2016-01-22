@@ -64,6 +64,9 @@ public class TestMeetingImpl{
 	public void testsGetId(){
 		System.out.println("date: " + date.getTime());
 		int output = meeting.getId();
+		
+		
+		
 		int expected = 1;
 		assertEquals(expected , output);
 	}
@@ -78,28 +81,16 @@ public class TestMeetingImpl{
 	@Test
 	public void testsGetContacts(){
 		Set<Contact> output = meeting.getContacts();
+		System.out.println ("The size of output contacts is " + output.size());
+		Contact cont4 = new ContactImpl(4 , "Jim");
+		contacts.add(cont4); // NPE here aswell
 		System.out.println("The size of contacts right now is " + contacts.size());
-		// Cannot work out why this gives me NPE. i cant seem to reach contacts form here, 
+		// Cannot work out why this gives me NPE. i cant seem to reach contacts from here, 
 		//despite meeting.getContacts() working. I have added tearDown but still same issue
 		Set<Contact> expected = contacts;
 		assertEquals(expected , output);
 	}
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
