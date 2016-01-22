@@ -21,7 +21,7 @@ public class TestContactImpl{
 	}
 	@Test(expected = IllegalArgumentException.class)
 	public void testsNegativeAndZeroIdsFailSecondConstructor(){
-		cont = new ContactImpl( -1 , "Sam Cooke", "good meeting");
+		cont = new ContactImpl( -1 , "Sam Cooke", "Good contact. ");
 	}
 	@Test
 	public void testGetName(){
@@ -47,18 +47,18 @@ public class TestContactImpl{
 	
 	@Test
 	public void testsAddNotesWhenNotesNullAndGetNotes(){
-		cont.addNotes("Meeting went well.");
+		cont.addNotes("Works for Edugood Ltd. ");
 		String output = cont.getNotes();
-		String expected = "Meeting went well.";
+		String expected = "Works for Edugood Ltd. ";
 		assertEquals(expected , output);
 	}
 	
 	@Test
 	public void testsAddNotesWhenNotesNotNullAndGetNotes(){
-		cont.addNotes("Meeting went well");
-		cont.addNotes("- actions all agreed");
+		cont.addNotes("Good contact. ");
+		cont.addNotes("Works for Edugood Ltd. ");
 		String output = cont.getNotes();
-		String expected = ("Meeting went well- actions all agreed");
+		String expected = ("Good contact. Works for Edugood Ltd. ");
 		assertEquals(expected , output);
 	}
 }
