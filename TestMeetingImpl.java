@@ -15,7 +15,7 @@ public class TestMeetingImpl{
 	Meeting meeting;
 	
 	@Before
-	public void init(){
+	public void setUp(){
 		cont1 = new ContactImpl(1 , "James");
 		cont2 = new ContactImpl(2 , "Jerome");
 		cont3 = new ContactImpl(3 , "Joe");
@@ -78,7 +78,7 @@ public class TestMeetingImpl{
 	@Test
 	public void testsGetContacts(){
 		Set<Contact> output = meeting.getContacts();
-		System.out.println("The size of contacts right now is " + contacts.size());
+		//System.out.println("The size of contacts right now is " + contacts.size());
 		// Cannot work out why this gives me NPE. i cant seem to reach contacts form here, 
 		//despite meeting.getContacts() working. I have added tearDown but still same issue
 		Set<Contact> expected = contacts;
