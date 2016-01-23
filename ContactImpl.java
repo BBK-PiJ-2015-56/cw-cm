@@ -2,9 +2,9 @@
 *@see Contact
 */
 public class ContactImpl implements Contact{
-	int id;
-	String name;
-	String notes;
+	private int id;
+	private String name;
+	private String notes;
 	
 	/** 
 	*   A constructor when the user does not have any 

@@ -12,9 +12,9 @@ import java.util.HashSet;
 * @see Meeting
 */
 public abstract class MeetingImpl implements Meeting {
-	int id;
-	Calendar date;
-	Set<Contact> contacts;
+	private int id;
+	private Calendar date;
+	private Set<Contact> contacts;
 	
 	public MeetingImpl(int id , Calendar date , Set<Contact> contacts){
 		if(id <= 0){
