@@ -17,15 +17,29 @@ public class TestContactManagerImpl{
 	}
 	
 	@Test
-	public void testAddNewContactEmptyNotes(){
-		cm.addNewContact("Charlie Parker" , "");
+	public void testAddNewContactToEmptySet(){
+		cm.addNewContact("Charlie Parker" , "Great on sax.");
 		int output = ((ContactManagerImpl)cm).getContacts().size();
 		int expected = 1;
 		assertEquals(expected , output);
 	} 
-	
-	
-
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddNewContactEmptyNotes(){
+		cm.addNewContact("Charlie Parker" , "");
 		
+	} 
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddNewContactEmptyName(){
+		cm.addNewContact("" , "Great on sax");
+	
+	}
+	@Test(expected = NullPointerException.class)
+	public void testAddNewContactNullNotes(){
+		cm.addNewContact("Charlie Parker" , null);
+	}
+	@Test(expected = NullPointerException.class)
+	public void testAddNewContactNullName(){
+		cm.addNewContact(null , "Great on sax");
+	}
 		
 }
