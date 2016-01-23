@@ -59,6 +59,16 @@ public class TestContactManagerImpl{
 		int expected = 1;
 		assertEquals(expected , output);
 	}
+	@Test
+	public void testsGetContactsOneStringArgWithTwoContactsSameName(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		int output = cm.getContacts("Charlie Parker").size();
+		int expected = 2;
+		assertEquals(expected , output);
+	}
 	
 	
 	
