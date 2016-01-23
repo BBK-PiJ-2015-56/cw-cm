@@ -36,18 +36,20 @@ public class ContactManagerImpl implements ContactManager{
 	public Set<Contact> getContacts(String name){
 		if(name == null){
 			throw new NullPointerException();
-		}else{
-			Set<Contact> contactsRequired = new HashSet<Contact>();
-			Iterator<Contact> iterator = contacts.iterator();
-			Contact current;
-			while(iterator.hasNext()){
-				current = iterator.next();
-				if(current.getName() == name){
-					contactsRequired.add(current);
+		}else if (name == ""){
+			return contacts;
+			} else {
+				Set<Contact> contactsRequired = new HashSet<Contact>();
+				Iterator<Contact> iterator = contacts.iterator();
+				Contact current;
+				while(iterator.hasNext()){
+					current = iterator.next();
+					if(current.getName() == name){
+						contactsRequired.add(current);
+					}
 				}
+				return contactsRequired;
 			}
-			return contactsRequired;
-		}
 	}
 	
 }
