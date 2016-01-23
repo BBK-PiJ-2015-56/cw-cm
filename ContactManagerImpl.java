@@ -24,8 +24,15 @@ public class ContactManagerImpl implements ContactManager{
 			return contactCount;
 			}
 	}
-	
+	//basic getter for contacts
 	public Set<Contact> getContacts(){
 		return contacts;
 	}
+	/**
+	* @see ContactManager
+	*/
+	public Set<Contact> getContacts(String name){
+		return contacts;
+	}
+	
 }
