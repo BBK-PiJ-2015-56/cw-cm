@@ -50,5 +50,6 @@ public class TestContactManagerImpl{
 		assertEquals(2 , id2);
 		assertEquals(3 , id3);
 	}
+	
 		
 }

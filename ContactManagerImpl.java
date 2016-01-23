@@ -20,7 +20,7 @@ public class ContactManagerImpl implements ContactManager{
 			throw new IllegalArgumentException();
 		}else{
 			contactCount++;
-			contacts.add(new ContactImpl(1, name, notes));
+			contacts.add(new ContactImpl(contactCount, name, notes));
 			return contactCount;
 			}
 	}
