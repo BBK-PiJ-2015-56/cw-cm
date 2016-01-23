@@ -6,10 +6,10 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class TestContactManagerImpl{
-
+	ContactManager cm;
 	@Before
 	public void setUp(){
-		ContactManager cm = new ContactManagerImpl();
+		cm = new ContactManagerImpl();
 	}
 	@After
 	public void tearDown(){
@@ -19,7 +19,7 @@ public class TestContactManagerImpl{
 	@Test
 	public void testAddNewContactEmptyNotes(){
 		cm.addNewContact("Charlie Parker" , "");
-		int output = cm.getContacts().size();
+		int output = ((ContactManagerImpl)cm).getContacts().size();
 		int expected = 1;
 		assertEquals(expected , output);
 	} 
