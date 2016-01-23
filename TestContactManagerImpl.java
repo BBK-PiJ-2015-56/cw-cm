@@ -99,20 +99,28 @@ public class TestContactManagerImpl{
 		assertEquals(expected , output);
 	}
 	@Test
-	public void testsGetContactsIntArrayOneIdMatches(){
+	public void testsGetContactsArrayIdMatches(){
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
 		int[] idsRequired = { 1 , 3};
+		System.out.println(" array length "  + idsRequired.length);
 		int firstoutput = cm.getContacts(idsRequired).size();
 		int firstexpected = 2;
 		assertEquals(firstexpected , firstoutput);
-		
-		int[] idsRequiredAgain = {3};
-		int secondoutput = cm.getContacts(idsRequiredAgain).size();
-		int secondexpected = 1;
-		assertEquals(secondexpected , secondoutput);
 	}
+	
+	//next test - arraywithNoIdmatches
+	
+	
+	
+		// next test:single int arg with a match
+		//int idRequired = 3;
+		//int secondoutput = cm.getContacts(idRequired).size();
+		//int secondexpected = 1;
+		//assertEquals(secondexpected , secondoutput);
+		
+		//next test - single int arg no match
 		
 	
 	
