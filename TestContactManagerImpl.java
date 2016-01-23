@@ -84,7 +84,8 @@ public class TestContactManagerImpl{
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
-		int output = cm.getContacts(null).size();
+		String name = null;
+		int output = cm.getContacts(name).size();
 		int expected = 0;
 		assertEquals(expected , output);
 	}
@@ -102,15 +103,15 @@ public class TestContactManagerImpl{
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
-		int[] idsRequired = { 1 , 3}
+		int[] idsRequired = { 1 , 3};
 		int firstoutput = cm.getContacts(idsRequired).size();
 		int firstexpected = 2;
-		assertEquals(expected , output);
+		assertEquals(firstexpected , firstoutput);
 		
-		int[] idsRequiredAgain = {3}
+		int[] idsRequiredAgain = {3};
 		int secondoutput = cm.getContacts(idsRequiredAgain).size();
 		int secondexpected = 1;
-		assertEquals(expected , output);
+		assertEquals(secondexpected , secondoutput);
 	}
 		
 	
