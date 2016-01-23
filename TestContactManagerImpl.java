@@ -88,6 +88,16 @@ public class TestContactManagerImpl{
 		int expected = 0;
 		assertEquals(expected , output);
 	}
+	@Test
+	public void testsGetContactsOneStringArgEmpty(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		int output = cm.getContacts("").size();
+		int expected = 3;
+		assertEquals(expected , output);
+	}
+		
 	
 	
 	
