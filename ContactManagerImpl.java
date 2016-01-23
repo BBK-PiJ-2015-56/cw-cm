@@ -52,4 +52,36 @@ public class ContactManagerImpl implements ContactManager{
 			}
 	}
 	
+	/**
+	* @see ContactManager
+	*/
+	public Set<Contact> getContacts(int... ids){
+		if(ids == null){
+			throw new NullPointerException();
+		} else {
+				Set<Contact> contactsRequired = new HashSet<Contact>();
+				Iterator<Contact> iterator = contacts.iterator();
+				Contact current;
+				while(iterator.hasNext()){
+					current = iterator.next();
+					for(int count = 0; count < ids.length; count++){
+						if(current.getId() == ids[count]){
+							contactsRequired.add(current);
+							break; // need to check this doesn't break for loop
+						}
+					}
+				}
+				return contactsRequired;
+			}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
