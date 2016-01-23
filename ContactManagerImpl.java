@@ -15,8 +15,12 @@ public class ContactManagerImpl implements ContactManager{
 		meetings = new HashSet<Meeting>();
 	}
 	public int addNewContact(String name , String notes){
-		contacts.add(new ContactImpl(1, name, notes));
-		return 10;
+		if((name == "") || (notes == "")){
+			throw new IllegalArgumentException();
+		}else{
+			contacts.add(new ContactImpl(1, name, notes));
+			return 10;
+			}
 	}
 	
 	public Set<Contact> getContacts(){
