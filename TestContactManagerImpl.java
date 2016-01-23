@@ -50,6 +50,18 @@ public class TestContactManagerImpl{
 		assertEquals(2 , id2);
 		assertEquals(3 , id3);
 	}
+	@Test
+	public void testsGetContactsOneStringArgOneExistingContact(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		int output = cm.getContacts("Charlie Parker").size();
+		int expected = 1;
+		assertEquals(expected , output);
+	}
+	
+	
+	
 	
 		
 }
