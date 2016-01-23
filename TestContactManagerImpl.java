@@ -41,5 +41,13 @@ public class TestContactManagerImpl{
 	public void testAddNewContactNullName(){
 		cm.addNewContact(null , "Great on sax");
 	}
+	public void testsAddNewContactGivesUniqueID(){
+		int id1 = cm.addNewContact("Charlie Parker" , "Great on sax");
+		int id2 = cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		int id3 = cm.addNewContact("Nat King Cole" , "fantastic voice");
+		assertEquals(1 , id1);
+		assertEquals(2 , id2);
+		assertEquals(3 , id3);
+	}
 		
 }
