@@ -69,6 +69,27 @@ public class TestContactManagerImpl{
 		int expected = 2;
 		assertEquals(expected , output);
 	}
+	@Test
+	public void testsGetContactsOneStringArgWithNoNameMatch(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		int output = cm.getContacts("Ella Fitzgerald").size();
+		int expected = 0;
+		assertEquals(expected , output);
+	}
+	@Test(expected = NullPointerException.class)
+	public void testsGetContactsOneStringArgNull(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		int output = cm.getContacts(null).size();
+		int expected = 0;
+		assertEquals(expected , output);
+	}
+	
+	
 	
 	
 	
