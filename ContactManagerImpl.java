@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
+import java.util.Iterator;
+
 /**
 * @see ContactManager
 */
@@ -32,7 +34,16 @@ public class ContactManagerImpl implements ContactManager{
 	* @see ContactManager
 	*/
 	public Set<Contact> getContacts(String name){
-		return contacts;
+		Set<Contact> contactsRequired = new HashSet<Contact>();
+		Iterator<Contact> iterator = contacts.iterator();
+		Contact current;
+		while(iterator.hasNext()){
+			current = iterator.next();
+			if(current.getName() == name){
+				contactsRequired.add(current);
+			}
+		}
+		return contactsRequired;
 	}
 	
 }
