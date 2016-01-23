@@ -24,7 +24,7 @@ public class ContactManagerImpl implements ContactManager{
 			contactCount++;
 			contacts.add(new ContactImpl(contactCount, name, notes));
 			return contactCount;
-			}
+		}
 	}
 	//basic getter for contacts
 	public Set<Contact> getContacts(){
@@ -34,16 +34,20 @@ public class ContactManagerImpl implements ContactManager{
 	* @see ContactManager
 	*/
 	public Set<Contact> getContacts(String name){
-		Set<Contact> contactsRequired = new HashSet<Contact>();
-		Iterator<Contact> iterator = contacts.iterator();
-		Contact current;
-		while(iterator.hasNext()){
-			current = iterator.next();
-			if(current.getName() == name){
-				contactsRequired.add(current);
+		if(name == null){
+			throw new NullPointerException();
+		}else{
+			Set<Contact> contactsRequired = new HashSet<Contact>();
+			Iterator<Contact> iterator = contacts.iterator();
+			Contact current;
+			while(iterator.hasNext()){
+				current = iterator.next();
+				if(current.getName() == name){
+					contactsRequired.add(current);
+				}
 			}
+			return contactsRequired;
 		}
-		return contactsRequired;
 	}
 	
 }
