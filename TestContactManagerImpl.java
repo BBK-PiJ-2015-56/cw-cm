@@ -51,7 +51,7 @@ public class TestContactManagerImpl{
 		assertEquals(3 , id3);
 	}
 	@Test
-	public void testsGetContactsOneStringArgOneExistingContact(){
+	public void testsGetContactsStringArgOneNameMatch(){
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
@@ -60,7 +60,7 @@ public class TestContactManagerImpl{
 		assertEquals(expected , output);
 	}
 	@Test
-	public void testsGetContactsOneStringArgWithTwoContactsSameName(){
+	public void testsGetContactsStringArgWithTwoContactsSameName(){
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
@@ -70,7 +70,7 @@ public class TestContactManagerImpl{
 		assertEquals(expected , output);
 	}
 	@Test
-	public void testsGetContactsOneStringArgWithNoNameMatch(){
+	public void testsGetContactsStringArgWithNoNameMatch(){
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
@@ -80,7 +80,7 @@ public class TestContactManagerImpl{
 		assertEquals(expected , output);
 	}
 	@Test(expected = NullPointerException.class)
-	public void testsGetContactsOneStringArgNull(){
+	public void testsGetContactsStringArgNull(){
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
@@ -89,12 +89,27 @@ public class TestContactManagerImpl{
 		assertEquals(expected , output);
 	}
 	@Test
-	public void testsGetContactsOneStringArgEmpty(){
+	public void testsGetContactsStringArgEmpty(){
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
 		int output = cm.getContacts("").size();
 		int expected = 3;
+		assertEquals(expected , output);
+	}
+	@Test
+	public void testsGetContactsIntArrayOneIdMatches(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		int[] idsRequired = { 1 , 3}
+		int firstoutput = cm.getContacts(idsRequired).size();
+		int firstexpected = 2;
+		assertEquals(expected , output);
+		
+		int[] idsRequiredAgain = {3}
+		int secondoutput = cm.getContacts(idsRequiredAgain).size();
+		int secondexpected = 1;
 		assertEquals(expected , output);
 	}
 		
