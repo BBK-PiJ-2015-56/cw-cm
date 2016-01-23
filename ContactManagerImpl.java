@@ -7,8 +7,9 @@ import java.util.HashSet;
 * @see ContactManager
 */
 public class ContactManagerImpl implements ContactManager{
-	Set<Contact> contacts;
-	Set<Meeting> meetings;
+	private Set<Contact> contacts;
+	private Set<Meeting> meetings;
+	private int contactCount = 0;
 	
 	public ContactManagerImpl(){
 		contacts = new HashSet<Contact>();
@@ -18,8 +19,9 @@ public class ContactManagerImpl implements ContactManager{
 		if((name == "") || (notes == "")){
 			throw new IllegalArgumentException();
 		}else{
+			contactCount++;
 			contacts.add(new ContactImpl(1, name, notes));
-			return 10;
+			return contactCount;
 			}
 	}
 	
