@@ -103,16 +103,24 @@ public class TestContactManagerImpl{
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
-		int[] idsRequired = { 1 , 3};
+		int[] idsRequired = { 1 , 15 ,  3 , 10};
 		System.out.println(" array length "  + idsRequired.length);
-		int firstoutput = cm.getContacts(idsRequired).size();
-		int firstexpected = 2;
-		assertEquals(firstexpected , firstoutput);
+		int output = cm.getContacts(idsRequired).size();
+		int expected = 2;
+		assertEquals(expected , output);
 	}
 	
-	//next test - arraywithNoIdmatches
-	
-	
+	@Test
+	public void testsGetContactsArrayNoMatch(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		int[] idsRequired = { 5 , 6 , 10};
+		System.out.println(" array length "  + idsRequired.length);
+		int output = cm.getContacts(idsRequired).size();
+		int expected = 0;
+		assertEquals(expected , output);
+	}
 	
 		// next test:single int arg with a match
 		//int idRequired = 3;
@@ -120,13 +128,6 @@ public class TestContactManagerImpl{
 		//int secondexpected = 1;
 		//assertEquals(secondexpected , secondoutput);
 		
-		//next test - single int arg no match
-		
-	
-	
-	
-	
-	
-	
+		//next test - single int arg no match	
 		
 }
