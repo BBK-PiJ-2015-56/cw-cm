@@ -242,4 +242,29 @@ public class TestContactManagerImpl{
 		Calendar date = new GregorianCalendar(2015,0,28,15,0);
 		cm.addFutureMeeting(contactsRequired , date);
 	}	
+	
+	@Test
+	public void testAddFutureMeetingTimeEqualsCurrentTimeOrSameDay(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		
+		cont1 = new ContactImpl(1 , "Charlie Parker");
+		cont2 = new ContactImpl(2 , "Louis Armstrong");
+		contactsRequired = new HashSet<Contact>();
+		contactsRequired.add(cont1);
+		contactsRequired.add(cont2);
+		
+		Calendar date = new GregorianCalendar(2016,0,1,15,0);
+		cm.addFutureMeeting(contactsRequired , date);
+		Calendar date2 = new GregorianCalendar(2016,0,1,15,30);
+		cm.addFutureMeeting(contactsRequired , date2);
+		Calendar date = new GregorianCalendar(2016,0,1,17,0);
+		cm.addFutureMeeting(contactsRequired , date);
+		
+		int output = ((ContactManageImpl)cm).getMeetings().size();
+		int expected = 3;
+		assertEquals(expected , output);
+	}
+	
 }
