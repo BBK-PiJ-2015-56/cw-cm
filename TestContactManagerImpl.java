@@ -159,7 +159,7 @@ public class TestContactManagerImpl{
 		
 		date = new GregorianCalendar(2016,0,28,15,0);
 		int returnOutput =  cm.addFutureMeeting(contactsRequired , date);
-		int returnExpected = 10;
+		int returnExpected = 1;
 		assertEquals(returnExpected , returnOutput);
 		
 		int output = ((ContactManagerImpl)cm).getMeetings().size();
@@ -190,11 +190,27 @@ public class TestContactManagerImpl{
 		assertEquals(2 , id2);
 		assertEquals(3 , id3);
 	}
-	/*
+	
 	@Test(expected = NullPointerException.class)
-	public void testsAddFutureMeetingNullArgs(){
+	public void testsAddFutureMeetingCNullArg(){
+		Calendar date = new GregorianCalendar(2016,0,28,15,0);
 		
+		cont1 = new ContactImpl(1 , "Charlie Parker");
+		cont2 = new ContactImpl(2 , "Louis Armstrong");
+		cont3 = new ContactImpl(3 , "Nat King Cole");
+		contactsRequired = new HashSet<Contact>();
+		contactsRequired.add(cont1);
+		contactsRequired.add(cont2);
+		
+		date = null;
+		cm.addFutureMeeting(contactsRequired , date);
+		
+		contactsRequired = null;
+		cm.addFutureMeeting(contactsRequired , date);
 	}
+	
+	
+	/*
 	@Test(expected = IllegalArgumentException)
 	public void testsAddFutureMeetingContactUnknown(){
 		
