@@ -259,10 +259,10 @@ public class TestContactManagerImpl{
 		cm.addFutureMeeting(contactsRequired , date);
 		Calendar date2 = new GregorianCalendar(2016,0,1,15,30);
 		cm.addFutureMeeting(contactsRequired , date2);
-		Calendar date = new GregorianCalendar(2016,0,1,17,0);
+		Calendar date3 = new GregorianCalendar(2016,0,1,17,0);
 		cm.addFutureMeeting(contactsRequired , date);
 		
-		int output = ((ContactManageImpl)cm).getMeetings().size();
+		int output = ((ContactManagerImpl)cm).getMeetings().size();
 		int expected = 3;
 		assertEquals(expected , output);
 	}
