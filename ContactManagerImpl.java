@@ -86,28 +86,33 @@ public class ContactManagerImpl implements ContactManager{
 	public int addFutureMeeting(Set<Contact> contacts, Calendar date){
 		if(contacts == null){
 			throw new NullPointerException();
-		} else if(date == null){
-			throw new NullPointerException();
-		} else {
-			for (Contact contactRequired : contacts){
-				System.out.println(" checking match for contact id: " + contactRequired.getId());
-				boolean contactKnown = false;
-				for(Contact contact : this.contacts){
-					System.out.println("checking if this contact matches contact with id: "+ contact.getId());
-					if(contact.getId() == contactRequired.getId()){
-						contactKnown = true;
-					}
-				}
-				if (contactKnown == false){
-					System.out.println("This contact has no matches in contacts");
-					throw new IllegalArgumentException();
-				}
-			}
-			meetingCount++;
-			Meeting meeting = new FutureMeetingImpl( meetingCount , date , contacts);
-			meetings.add(meeting);
-			return meeting.getId();
-		}
+			} else if(date == null){
+					throw new NullPointerException();
+					} else if(date.compareTo(currentDate) < 0){
+							throw new IllegalArgumentException();
+							}else{
+								boolean allContactsKnown = true;
+								for (Contact contactRequired : contacts){
+									boolean contactKnown = false;
+									for(Contact contact : this.contacts){
+										if(contact.getId() == contactRequired.getId()){
+											contactKnown = true;
+											}
+										}
+									if (contactKnown == false){
+										allContactsKnown = false;
+										}
+									}
+								if(allContactsKnown == false){
+									throw new IllegalArgumentException();
+									} else {
+										meetingCount++;
+										Meeting meeting = new 
+											FutureMeetingImpl(meetingCount ,date ,contacts);
+										meetings.add(meeting);
+										return meeting.getId();
+										}
+								}
 	}
 	
 	public Set<Meeting> getMeetings(){
