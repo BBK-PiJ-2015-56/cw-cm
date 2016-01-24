@@ -209,12 +209,24 @@ public class TestContactManagerImpl{
 		cm.addFutureMeeting(contactsRequired , date);
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testsAddFutureMeetingContactUnknown(){
+		Calendar date = new GregorianCalendar(2016,0,28,15,0);
+		
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		
+		cont1 = new ContactImpl(1 , "Charlie Parker");
+		cont2 = new ContactImpl(5 , "Stuff Smith");
+		contactsRequired = new HashSet<Contact>();
+		contactsRequired.add(cont1);
+		contactsRequired.add(cont2);
+		
+		cm.addFutureMeeting(contactsRequired , date);
+	}
 	
 	/*
-	@Test(expected = IllegalArgumentException)
-	public void testsAddFutureMeetingContactUnknown(){
-		
-	}
 	@Test(expected = IllegalArgumentException)
 	public void testsAddFutureMeetingTimeInPast(){
 		
