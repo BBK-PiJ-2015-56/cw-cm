@@ -218,7 +218,7 @@ public class TestContactManagerImpl{
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
 		
 		cont1 = new ContactImpl(1 , "Charlie Parker");
-		cont2 = new ContactImpl(5 , "Stuff Smith");
+		cont2 = new ContactImpl(50 , "Stuff Smith");
 		contactsRequired = new HashSet<Contact>();
 		contactsRequired.add(cont1);
 		contactsRequired.add(cont2);

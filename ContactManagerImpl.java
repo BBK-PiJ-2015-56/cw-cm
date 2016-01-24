@@ -86,10 +86,24 @@ public class ContactManagerImpl implements ContactManager{
 		} else if(date == null){
 			throw new NullPointerException();
 		} else {
-		meetingCount++;
-		Meeting meeting = new FutureMeetingImpl( meetingCount , date , contacts);
-		meetings.add(meeting);
-		return meeting.getId();
+			for (Contact contactRequired : contacts){
+				System.out.println(" checking match for contact id: " + contactRequired.getId());
+				boolean contactKnown = false;
+				for(Contact contact : this.contacts){
+					System.out.println("checking if this contact matches contact with id: "+ contact.getId());
+					if(contact.getId() == contactRequired.getId()){
+						contactKnown = true;
+					}
+				}
+				if (contactKnown == false){
+					System.out.println("This contact has no matches in contacts");
+					throw new IllegalArgumentException();
+				}
+			}
+			meetingCount++;
+			Meeting meeting = new FutureMeetingImpl( meetingCount , date , contacts);
+			meetings.add(meeting);
+			return meeting.getId();
 		}
 	}
 	
