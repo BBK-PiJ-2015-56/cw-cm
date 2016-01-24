@@ -168,7 +168,9 @@ public class TestContactManagerImpl{
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
 		
 		date = new GregorianCalendar(2016,0,28,15,0);
-		cm.addFutureMeeting(contactsRequired , date);
+		int returnOutput =  cm.addFutureMeeting(contactsRequired , date);
+		int returnExpected = 1;
+		assertEquals(returnExpected , returnOutput);
 		int output = ((ContactManagerImpl)cm).getMeetings().size();
 		int expected = 1;
 		assertEquals(expected , output);
