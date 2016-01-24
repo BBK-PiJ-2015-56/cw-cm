@@ -148,13 +148,7 @@ public class TestContactManagerImpl{
 		cm.addNewContact("Charlie Parker" , "Great on sax");
 		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
 		cm.addNewContact("Nat King Cole" , "fantastic voice");
-		//how do we create the contacts, without getting a subset of contacts?
-		//plan: instantiate a set of contacts here. Then instanttiate 
-		//a set of contacts using the same ids/names using addNewContact in
-		//ContactManagerImpl.
-		//Then call addFutureMeeting using the set instantiated here as the arg.
-		// in next test, do the same but include an extra contact here that 
-		//is not instantiated in ContactManagerImpl.
+		
 		cont1 = new ContactImpl(1 , "Charlie Parker");
 		cont2 = new ContactImpl(2 , "Louis Armstrong");
 		cont3 = new ContactImpl(3 , "Nat King Cole");
@@ -163,29 +157,40 @@ public class TestContactManagerImpl{
 		contactsRequired.add(cont2);
 		System.out.println("The number of contacts required is: " + contactsRequired.size());
 		
-		cm.addNewContact("Charlie Parker" , "Great on sax");
-		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
-		cm.addNewContact("Nat King Cole" , "fantastic voice");
-		
 		date = new GregorianCalendar(2016,0,28,15,0);
 		int returnOutput =  cm.addFutureMeeting(contactsRequired , date);
-		int returnExpected = 1;
+		int returnExpected = 10;
 		assertEquals(returnExpected , returnOutput);
+		
 		int output = ((ContactManagerImpl)cm).getMeetings().size();
 		int expected = 1;
 		assertEquals(expected , output);
 	}
 	
-	
-	
-	
-	
-	
-	/*@Test
+	@Test
 	public void testsAddFutureMeetingNoTimeCheckIdsUnique(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
 		
+		cont1 = new ContactImpl(1 , "Charlie Parker");
+		cont2 = new ContactImpl(2 , "Louis Armstrong");
+		cont3 = new ContactImpl(3 , "Nat King Cole");
+		contactsRequired = new HashSet<Contact>();
+		contactsRequired.add(cont1);
+		contactsRequired.add(cont2);
+		Calendar date1 = new GregorianCalendar(2016,0,28,15,0);
+		Calendar date2 = new GregorianCalendar(2016,0,29,15,0);
+		Calendar date3 = new GregorianCalendar(2016,0,30,15,0);
+		int id1 =  cm.addFutureMeeting(contactsRequired , date1);
+		int id2 =  cm.addFutureMeeting(contactsRequired , date2);
+		int id3 =  cm.addFutureMeeting(contactsRequired , date3);
+		
+		assertEquals(1 , id1);
+		assertEquals(2 , id2);
+		assertEquals(3 , id3);
 	}
-	
+	/*
 	@Test(expected = NullPointerException.class)
 	public void testsAddFutureMeetingNullArgs(){
 		
