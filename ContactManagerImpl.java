@@ -13,10 +13,13 @@ public class ContactManagerImpl implements ContactManager{
 	private Set<Meeting> meetings;
 	private int contactCount = 0;
 	private int meetingCount = 0;
+	private final Calendar currentDate;
 	
 	public ContactManagerImpl(){
 		contacts = new HashSet<Contact>();
 		meetings = new HashSet<Meeting>();
+		DateFinder dateFinder = new MockDateFinder();
+		currentDate = dateFinder.getCurrentDate();
 	}
 	public int addNewContact(String name , String notes){
 		if((name == "") || (notes == "")){
