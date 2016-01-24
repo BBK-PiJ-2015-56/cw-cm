@@ -12,6 +12,7 @@ public class ContactManagerImpl implements ContactManager{
 	private Set<Contact> contacts;
 	private Set<Meeting> meetings;
 	private int contactCount = 0;
+	private int meetingCount = 0;
 	
 	public ContactManagerImpl(){
 		contacts = new HashSet<Contact>();
@@ -77,10 +78,19 @@ public class ContactManagerImpl implements ContactManager{
 	/**
 	* @see ContactManager
 	*/
+	
+	//does it need IAE if contactsRequired is empty? confirm requirements
 	public int addFutureMeeting(Set<Contact> contacts, Calendar date){
-		Meeting meeting = new FutureMeetingImpl( 10 , date , contacts);
+		if(contacts == null){
+			throw new NullPointerException();
+		} else if(date == null){
+			throw new NullPointerException();
+		} else {
+		meetingCount++;
+		Meeting meeting = new FutureMeetingImpl( meetingCount , date , contacts);
 		meetings.add(meeting);
 		return meeting.getId();
+		}
 	}
 	
 	public Set<Meeting> getMeetings(){
