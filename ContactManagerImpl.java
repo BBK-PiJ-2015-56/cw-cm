@@ -67,12 +67,24 @@ public class ContactManagerImpl implements ContactManager{
 					for(int count = 0; count < ids.length; count++){
 						if(current.getId() == ids[count]){
 							contactsRequired.add(current);
-							break; // need to check this doesn't break for loop
+							break; 
 						}
 					}
 				}
 				return contactsRequired;
 			}
+	}
+	/**
+	* @see ContactManager
+	*/
+	public int addFutureMeeting(Set<Contact> contacts, Calendar date){
+		Meeting meeting = new FutureMeetingImpl( 10 , date , contacts);
+		meetings.add(meeting);
+		return meeting.getId();
+	}
+	
+	public Set<Meeting> getMeetings(){
+		return meetings;
 	}
 	
 	
