@@ -1,12 +1,20 @@
-import java.util.Calendar;
 import java.util.List;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Set;
+import java.util.HashSet;
 
 import org.junit.*;
 import static org.junit.Assert.*;
 
 public class TestContactManagerImpl{
-	ContactManager cm;
+	private ContactManager cm;
+	private Contact cont1;
+	private Contact cont2;
+	private Contact cont3;
+	private Calendar date;
+	private Set<Contact> contactsRequired;
+	
 	@Before
 	public void setUp(){
 		cm = new ContactManagerImpl();
@@ -135,12 +143,57 @@ public class TestContactManagerImpl{
 		int secondexpected = 0;
 		assertEquals(expected , output);
 	}
+	@Test
+	public void testsAddFutureMeetingAndMeetingsGetter(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		//how do we create the contacts, without getting a subset of contacts?
+		//plan: instantiate a set of contacts here. Then instanttiate 
+		//a set of contacts using the same ids/names using addNewContact in
+		//ContactManagerImpl.
+		//Then call addFutureMeeting using the set instantiated here as the arg.
+		// in next test, do the same but include an extra contact here that 
+		//is not instantiated in ContactManagerImpl.
+		cont1 = new ContactImpl(1 , "Charlie Parker");
+		cont2 = new ContactImpl(2 , "Louis Armstrong");
+		cont3 = new ContactImpl(3 , "Nat King Cole");
+		contactsRequired = new HashSet<Contact>();
+		contactsRequired.add(cont1);
+		contactsRequired.add(cont2);
+		System.out.println("The number of contacts required is: " + contactsRequired.size());
 		
-		//int idRequired = 3;
-		//int secondoutput = cm.getContacts(idRequired).size();
-		//int secondexpected = 1;
-		//assertEquals(secondexpected , secondoutput);
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
 		
-		//next test - single int arg no match	
+		date = new GregorianCalendar(2016,0,28,15,0);
+		cm.addFutureMeeting(contactsRequired , date);
+		int output = ((ContactManagerImpl)cm).getMeetings().size();
+		int expected = 1;
+		assertEquals(expected , output);
+	}
+	
+	
+	
+	
+	
+	
+	/*@Test
+	public void testsAddFutureMeetingNoTimeCheckIdsUnique(){
 		
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testsAddFutureMeetingNullArgs(){
+		
+	}
+	@Test(expected = IllegalArgumentException)
+	public void testsAddFutureMeetingContactUnknown(){
+		
+	}
+	@Test(expected = IllegalArgumentException)
+	public void testsAddFutureMeetingTimeInPast(){
+		
+	}*/	
 }
