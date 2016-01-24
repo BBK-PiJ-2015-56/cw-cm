@@ -39,7 +39,7 @@ public interface ContactManager {
 	*/
 	Set<Contact> getContacts(int... ids);
 	
-	/**
+	 git push /**
 	* Add a new meeting to be held in the future.
 	*
 	* An ID is returned when the meeting is put into the system. This
