@@ -121,8 +121,21 @@ public class TestContactManagerImpl{
 		int expected = 0;
 		assertEquals(expected , output);
 	}
-	
-		// next test:single int arg with a match
+	@Test
+	public void testsGetContactsIntArg(){
+		cm.addNewContact("Charlie Parker" , "Great on sax");
+		cm.addNewContact("Louis Armstrong" , "Great on trumpet");
+		cm.addNewContact("Nat King Cole" , "fantastic voice");
+		
+		int output = cm.getContacts(2).size();
+		int expected = 1;
+		assertEquals(expected , output);
+		
+		int secondoutput = cm.getContacts(5).size();
+		int secondexpected = 0;
+		assertEquals(expected , output);
+	}
+		
 		//int idRequired = 3;
 		//int secondoutput = cm.getContacts(idRequired).size();
 		//int secondexpected = 1;
